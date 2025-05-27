@@ -124,6 +124,23 @@
                 elementoIcone.textContent = "◠";
             }
         }
+        document.querySelectorAll("nav ul li a").forEach(link => {
+            const href = link.getAttribute("href");
+            if ((href === "ranking.html" || href === "questoes.html") && !user) {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    showAlert();
+                });
+            }
+        });
+    });
+function showAlert() {
+    const alert = document.getElementById("custom-alert");
+    if (alert) {
+        alert.style.display = "flex";
+    }
+}
+
     </script>
 </body>
 </html>
