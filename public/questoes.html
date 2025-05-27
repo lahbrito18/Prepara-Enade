@@ -266,7 +266,7 @@ function logout(event) {
   async function atualizarPontuacao(userId, pontos) {
     console.log("Adicionando pontos:", pontos, "para o usuário:", userId);
   try {
-    const res = await fetch("http://prepara-enade.onrender.com/api/auth/usuarios/pontos",{
+    const res = await fetch("https://prepara-enade.onrender.com/api/auth/usuarios/pontos",{
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
