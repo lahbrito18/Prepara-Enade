@@ -3,9 +3,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 
-const authRoutes = require('./banco/routes/auth');
-const questaoRoutes = require('./banco/routes/questoes');
-const salaRoutes = require('./banco/routes/salas');
+const authRoutes = require('./public/banco/routes/auth');
+const questaoRoutes = require('./public/banco/routes/questoes');
+const salaRoutes = require('./public/banco/routes/salas');
 
 const app = express();
 
