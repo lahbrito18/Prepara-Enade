@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('./banco/banco.db');
 
 const authRoutes = require('./banco/routes/auth');
 const questaoRoutes = require('./banco/routes/questoes');
