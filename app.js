@@ -5,9 +5,9 @@ const path = require('path');
  // ajuste o caminho se necessário
 
 
-const authRoutes = require('./routes/auth');
-const questaoRoutes = require('./routes/questoes');
-const salaRoutes = require('./routes/salas');
+const authRoutes = require('./banco/routes/auth');
+const questaoRoutes = require('./banco/routes/questoes');
+const salaRoutes = require('./banco/routes/salas');
 
 const app = express();
 
