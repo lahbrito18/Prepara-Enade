@@ -71,9 +71,6 @@ router.post('/login', (req, res) => {
     res.json({ message: 'Login bem-sucedido', user });
   });
 });
-router.get('/registro', (req, res) => {
-  res.send('Use POST para registrar um usuário.');
-});
 
 // Esqueci a senha
 router.post('/forgot-password', (req, res) => {
