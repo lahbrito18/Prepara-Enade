@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./banco.db');
+const db = new sqlite3.Database('./banco/banco.db');
 
 // Criar tabelas
 db.serialize(() => {
