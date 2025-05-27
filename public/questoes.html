@@ -65,7 +65,7 @@
 
     async function carregarQuestoes() {
       try {
-        const res = await fetch("https://prepara-enade.onrender.com/api/questoes");
+        const res = await fetch("https://localhost:10000/api/questoes");
         const dados = await res.json();
         questoesCarregadas = dados;
 
