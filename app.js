@@ -4,34 +4,9 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 const sqlite3 = require('sqlite3').verbose();
-
-const pathToDb = path.join(__dirname, 'banco', 'banco.db');
-
-if (!fs.existsSync(pathToDb)) {
-  console.error('❌ Banco de dados não encontrado em:', pathToDb);
-} else {
-  console.log('✅ Banco de dados localizado com sucesso em:', pathToDb);
-}
-
-const db = new sqlite3.Database(pathToDb, (err) => {
-  if (err) {
-    console.error('Erro ao abrir banco:', err.message);
-  } else {
-    console.log('Conectado ao banco SQLite!');
-    db.get('SELECT name FROM sqlite_master WHERE type="table"', (err, row) => {
-      if (err) {
-        console.error('Erro na query:', err.message);
-      } else {
-        console.log('Tabela encontrada no banco:', row ? row.name : 'Nenhuma tabela');
-      }
-    });
-  }
-});
-
 const authRoutes = require('./banco/routes/auth');
 const questaoRoutes = require('./banco/routes/questoes');
 const salaRoutes = require('./banco/routes/salas');
-
 const app = express();
 
 app.use(cors());
