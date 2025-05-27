@@ -87,7 +87,7 @@ router.post('/forgot-password', (req, res) => {
 
     resetTokens[token] = { email, expires };
 
-    const resetLink = `http://localhost:3000/reset-password.html?token=${token}`;
+    const resetLink = `http://prepara-enade.onrender.com/reset-password.html?token=${token}`;
 
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
