@@ -37,12 +37,21 @@ app.use('/api/questoes', questaoRoutes);
 app.use('/api/salas', salaRoutes);
 const fs = require('fs');
 
-const pathToDb = './banco/banco.db';
-if (!fs.existsSync(pathToDb)) {
-  console.error('❌ Banco de dados não encontrado em:', pathToDb);
-} else {
-  console.log('✅ Banco de dados localizado com sucesso!');
-}
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database(pathToDb, (err) => {
+  if (err) {
+    console.error('Erro ao abrir banco:', err.message);
+  } else {
+    console.log('Conectado ao banco SQLite!');
+    db.get('SELECT name FROM sqlite_master WHERE type="table"', (err, row) => {
+      if (err) {
+        console.error('Erro na query:', err.message);
+      } else {
+        console.log('Tabela encontrada no banco:', row ? row.name : 'Nenhuma tabela');
+      }
+    });
+  }
+});
 
 // Usar porta definida pelo Render ou padrão 3000
 const PORT = process.env.PORT || 3000;
