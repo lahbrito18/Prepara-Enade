@@ -2,8 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
- // ajuste o caminho se necessário
-
 
 const authRoutes = require('./banco/routes/auth');
 const questaoRoutes = require('./banco/routes/questoes');
@@ -14,16 +12,21 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Servir arquivos estáticos (HTML, CSS, JS, etc.) da raiz do projeto (ajuste o caminho conforme a estrutura)
-app.use(express.static(path.join(__dirname, '..')));
+// Servir arquivos estáticos da pasta 'public'
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Rotas para as páginas específicas, caso precise servir direto por rota
+// Rota para a página inicial
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Rotas específicas para outras páginas HTML
 app.get('/reset-password.html', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'reset-password.html'));
+  res.sendFile(path.join(__dirname, 'public', 'reset-password.html'));
 });
 
 app.get('/forgot-password.html', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'forgot-password.html'));
+  res.sendFile(path.join(__dirname, 'public', 'forgot-password.html'));
 });
 
 // Rotas da API
@@ -31,8 +34,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/questoes', questaoRoutes);
 app.use('/api/salas', salaRoutes);
 
-
-const PORT = 3000;
+// Usar porta definida pelo Render ou padrão 3000
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
