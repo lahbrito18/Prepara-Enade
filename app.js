@@ -35,6 +35,14 @@ app.get('/forgot-password.html', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/questoes', questaoRoutes);
 app.use('/api/salas', salaRoutes);
+const fs = require('fs');
+
+const pathToDb = './banco/banco.db';
+if (!fs.existsSync(pathToDb)) {
+  console.error('❌ Banco de dados não encontrado em:', pathToDb);
+} else {
+  console.log('✅ Banco de dados localizado com sucesso!');
+}
 
 // Usar porta definida pelo Render ou padrão 3000
 const PORT = process.env.PORT || 3000;
