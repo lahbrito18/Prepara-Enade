@@ -177,7 +177,7 @@ btnGerarSimulado.addEventListener("click", () => {
 
   async function carregarQuestoes() {
     try {
-      const res = await fetch("http://localhost:3000/api/questoes");
+      const res = await fetch("http://prepara-enade.onrender.com/api/questoes");
       const dados = await res.json();
       questoesCarregadas = dados;
       preencherFiltrosComCheckboxes(dados);
