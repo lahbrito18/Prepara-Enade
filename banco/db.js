@@ -58,5 +58,16 @@ db.run(`CREATE TABLE IF NOT EXISTS comentarios (
   texto TEXT NOT NULL,
   data TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   )`);
+db.serialize(() => {
+  db.run("ALTER TABLE users ADD COLUMN apelido TEXT", (err) => {
+    if (err && !err.message.includes("duplicate column")) console.error("Erro ao adicionar 'apelido':", err.message);
+  });
+  db.run("ALTER TABLE users ADD COLUMN pais TEXT", (err) => {
+    if (err && !err.message.includes("duplicate column")) console.error("Erro ao adicionar 'pais':", err.message);
+  });
+  db.run("ALTER TABLE users ADD COLUMN foto TEXT", (err) => {
+    if (err && !err.message.includes("duplicate column")) console.error("Erro ao adicionar 'foto':", err.message);
+  });
+});
   
 module.exports = db;
