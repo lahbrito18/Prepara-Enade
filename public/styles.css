@@ -13,7 +13,10 @@ body {
   height: 100%;
   padding-bottom: 60px;
 }
-
+h4{
+    white-space: pre-wrap;
+    font-weight: normal;
+  }
 /* Layout Principal */
 main {
   display: flex;
