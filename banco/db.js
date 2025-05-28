@@ -69,6 +69,11 @@ db.run(`CREATE TABLE IF NOT EXISTS comentarios (
   db.run("ALTER TABLE users ADD COLUMN foto TEXT", (err) => {
     if (err && !err.message.includes("duplicate column")) console.error("Erro ao adicionar 'foto':", err.message);
   });
+    db.run("ALTER TABLE users ADD COLUMN pontos INTEGER DEFAULT 0", (err) => {
+  if (err && !err.message.includes("duplicate column")) {
+    console.error("Erro ao adicionar 'pontos':", err.message);
+  }
+  });
 });
 
 module.exports = db;
