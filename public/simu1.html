@@ -78,7 +78,7 @@
             <span class="tag-info"><strong>Ano:</strong> ${q.ano || 'Ano'}</span>
             <span class="tag-info"><strong>Categoria:</strong> ${q.categoria ? q.categoria.charAt(0).toUpperCase() + q.categoria.slice(1) : 'Categoria'}</span>
           </div>
-          <h>${q.enunciado}</h>
+          <h4>${q.enunciado}</h4>
           <div class="alternativas" id="alternativas_${index}">
             ${alternativasEmbaralhadas.map((alt, i) => `
   <label class="alternativa-item">
